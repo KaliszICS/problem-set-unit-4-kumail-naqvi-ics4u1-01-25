@@ -15,11 +15,9 @@ public class ExampleClass {
         Deck deck = new Deck();
         deck.shuffle();
 
-        System.out.print("Enter Player 1 name: ");
-        String name1 = sc.nextLine();
-        System.out.print("Enter Player 2 name: ");
-        String name2 = sc.nextLine();
-
+        //custom method to make sure name is valid
+        String name1 = nonBlank(sc, "Enter Player 1 name: ");
+        String name2 = nonBlank(sc, "Enter Player 2 name: ");
         //custom method to make sure a positive integer is given for the players age
         int age1 = readPositiveInt(sc, "Enter " + name1 + "'s age: ");
         int age2 = readPositiveInt(sc, "Enter " + name2 + "'s age: ");
@@ -115,5 +113,59 @@ public class ExampleClass {
                 System.out.println("Enter a whole number");
             }
         }
+    }
+    /**
+     * Looks at the inputted name and checks if it's valid
+     * @param sc the scanner
+     * @param input user name input
+     * @return the name
+     */
+    private static String nonBlank(Scanner sc, String input) {
+        String s = "";
+        while (true) {
+            System.out.print(input); 
+            s = sc.nextLine();
+            if (s.isEmpty() || s.isBlank()) {
+                System.out.println("Name can't be empty try again");
+                continue;
+            }
+            if (!validName(s)) {
+                System.out.println("Invalid name, only use letters and spaces");
+                continue;
+            }
+            return s;
+        }
+    }
+    /**
+     * Gives the requirements for a valid name
+     * @param s the name string
+     * @return true if the name passes all checks
+     */
+    //stops unwanted names
+    private static boolean validName(String s) {
+        if (s == null) {
+            return false;
+        }
+        if (s.isEmpty() || s.length() > 20) {
+            return false;
+        }
+        boolean space = false;
+        boolean letter = false;
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (Character.isLetter(c)) {
+                letter = true;
+                space = false;
+            }
+            else if (c != ' ') {
+                if (space) {
+                    return false;
+                }
+                space = true;
+            } else {
+                return false;
+            }
+        }
+        return letter;
     }
 }

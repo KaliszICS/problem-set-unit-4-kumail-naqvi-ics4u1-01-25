@@ -21,7 +21,7 @@ class Card{
         if (name == null || name.isEmpty()) {
             throw new IllegalArgumentException("Card name can't be empty");
         }
-        if (suit ==null || suit.isEmpty()) {
+        if (suit ==null || suit.isEmpty() || suit.isBlank()) {
             throw new IllegalArgumentException("The suit can't be empty");
         }
         if (value < 1) {
@@ -243,9 +243,10 @@ class DiscardPile {
     /**
     * Returns all cards in a certain format
     */
+   //in the format of "Ace of hearts, King of Hearts, Queen of Hearts, Jack of Hearts, 9 of Spades"
     @Override public String toString() {
         if (pile.isEmpty()) {
-            return "";
+            return "";           
         }
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < pile.size(); i++) {
@@ -274,7 +275,7 @@ class Player {
      * @throws IllegalArgumentException if player's name or starting hand is empty or if their age is negative
      */
     Player(String name, int age, Card[] startingHand) {
-        if(name==null) {
+        if(name==null || name.isBlank()) {
             throw new IllegalArgumentException("Your name can't be empty");
         }
         if (age < 0) {
@@ -302,7 +303,7 @@ class Player {
      * @throws IllegalArgumentException if player's name is empty or their age is negative
      */
     Player (String name, int age) {
-        if(name==null) {
+        if(name==null || name.isBlank()) {
             throw new IllegalArgumentException("Your name can't be empty");
         }
         if (age < 0) {
