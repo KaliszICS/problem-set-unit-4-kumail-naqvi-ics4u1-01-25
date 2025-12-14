@@ -1,9 +1,10 @@
 K(30%): 100%
 I(30%): 93%
-C(10%): 100%
+C(10%): 80%
 A(30%): 98%
-97.3%
+95.3%
 
+Javadocs could be more fleshed out.  Also make sure you have a javadoc for EACH getter
 Make a new file for each of your classes
 Constructors should avoid altering the information given to them by removing things and should instead throw an exception if data is invalid.
 Avoid throwing exceptions that will already be thrown for you (null cards would get their exception from addCard)
