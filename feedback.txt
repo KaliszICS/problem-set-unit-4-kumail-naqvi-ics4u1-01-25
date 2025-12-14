@@ -1,0 +1,13 @@
+K(30%): 100%
+I(30%): 93%
+C(10%): 100%
+A(30%): 98%
+97.3%
+
+Make a new file for each of your classes
+Constructors should avoid altering the information given to them by removing things and should instead throw an exception if data is invalid.
+Avoid throwing exceptions that will already be thrown for you (null cards would get their exception from addCard)
+Don't limit your object by placing restrictions on it that don't break your code.  Someone may want to use empty strings, null values or negatives for names/suits/values etc.
+Reuse your methods (addCard) to reduce code and create a more streamlined version.  Would also reduce number of exceptions.
+Avoid using methods that are not backwards compatible (isBlank vs isEmpty).  Can be good but can also be bad to use the latest thing!
+Otherwise great work!
